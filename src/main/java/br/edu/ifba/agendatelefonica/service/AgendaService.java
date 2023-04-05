@@ -1,22 +1,18 @@
 package br.edu.ifba.agendatelefonica.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import br.edu.ifba.agendatelefonica.domain.dto.ContatoDto;
-import br.edu.ifba.agendatelefonica.domain.entities.Contato;
-import br.edu.ifba.agendatelefonica.repositories.AgendaRepository;
 
-@Service
-public class AgendaService {
+public interface AgendaService {
 
-  @Autowired
-  private AgendaRepository repository;
+  void cadastrar(ContatoDto contatoDto);
 
+  List<ContatoDto> getAllContatos();
 
-  public void cadastrar(ContatoDto contatoDto) {
+  ContatoDto getOneContato(Long id);
 
-    Contato entity = contatoDto.toEntity();
-    repository.save(entity);
-  }
+  void deleteContato(Long id);
+
+  void updateContato(Long id, ContatoDto contatoDto);
 }
